@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1beta1
+kind: ArgoCD
+metadata:
+  name: argocd-instance
+  namespace: argocd 
+spec:
+  server:
+    route:
+      enabled: true
+    ingress:
+      enabled: true
+    host: argocd.apps-crc.testing
+  banner:
+    content: https://github.com/chtime/byi-oc
+  sso:
+    provider: dex
