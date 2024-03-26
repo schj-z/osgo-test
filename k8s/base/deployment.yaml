@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: osgo-test
+  name: osgo-test
+  namespace: osgo-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: osgo-test
+  template:
+    metadata:
+      labels:
+        app: osgo-test
+    spec:
+      containers:
+      - name: app
+        image: osgo-test:latest
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        env:
+        - name: BIND_HOST
+          value: "0.0.0.0"
+        - name: BIND_PORT
+          value: "8080"

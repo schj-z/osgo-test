@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: osgo-test-aoa
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/schj-z/osgo-test"
+    targetRevision: master
+    path: ks8
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: 'default'
+  syncPolicy:
+    automated: {}
